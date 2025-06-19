@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonaLens - Support & Help</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+        
+        .contact-info {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .faq-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            position: relative;
+            padding: 15px 15px 15px 60px;
+            margin-bottom: 15px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .download-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .download-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 PersonaLens</h1>
+            <p>AI-Powered Personality Analysis from Your Chat Conversations</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">📧</span>Contact Support</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:personalens.support@gmail.com">personalens.support@gmail.com</a></p>
+                <p><strong>Response Time:</strong> Usually within 24 hours</p>
+                <p><strong>Languages:</strong> English, Spanish, French, German, Portuguese</p>
+            </div>
+            <p>Having trouble with PersonaLens? We're here to help! Send us an email with your question and we'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🚀</span>How to Use PersonaLens</h2>
+            <div class="steps">
+                <div class="step">
+                    <strong>Export Your WhatsApp Chat</strong><br>
+                    Open WhatsApp → Select a chat → Tap "More" → "Export Chat" → Choose "Without Media" → Save as ZIP file
+                </div>
+                <div class="step">
+                    <strong>Import to PersonaLens</strong><br>
+                    Open PersonaLens → Tap "Analyze Chat" → Select your exported ZIP file
+                </div>
+                <div class="step">
+                    <strong>Choose Analysis Type</strong><br>
+                    Select "Individual Analysis" for personality insights or "Relationship Analysis" for compatibility
+                </div>
+                <div class="step">
+                    <strong>Wait for Processing</strong><br>
+                    Our AI analyzes your conversation patterns (all processing happens locally on your device)
+                </div>
+                <div class="step">
+                    <strong>Explore Your Results</strong><br>
+                    View your Big Five personality traits, communication style, and character matches
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">📁</span>Sample WhatsApp Export</h2>
+            <p>Need a sample file to test the app? Download our anonymized sample WhatsApp export:</p>
+            <a href="data:application/zip;base64,UEsDBAoAAAAAAIdWeFAAAAAAAAAAAAAAAAAJAAAAY2hhdC50eHSCiJ3OwMDN6lIDrBxA" download="sample_chat.zip" class="download-link">
+                📥 Download Sample Chat Export
+            </a>
+            <div class="success">
+                <strong>✅ Safe to Use:</strong> This sample contains anonymized conversation data perfect for testing PersonaLens features.
+            </div>
+
+            <h3>Sample Chat Format:</h3>
+            <div class="code-block">
+12/1/23, 10:30 AM - Alice: Hey! How was your day?
+12/1/23, 10:32 AM - Bob: Pretty good! Just finished work. What about you?
+12/1/23, 10:33 AM - Alice: Same here! Want to grab dinner tonight? 🍕
+12/1/23, 10:35 AM - Bob: Absolutely! I know a great place downtown
+12/1/23, 10:36 AM - Alice: Perfect! See you at 7? 😊
+12/1/23, 10:37 AM - Bob: It's a date! 👍
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">✨</span>App Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>🧠 Big Five Analysis</strong><br>
+                    Scientific personality assessment based on the OCEAN model
+                </div>
+                <div class="feature-item">
+                    <strong>💑 Compatibility Scoring</strong><br>
+                    Relationship analysis with detailed compatibility metrics
+                </div>
+                <div class="feature-item">
+                    <strong>🎨 AI Character Art</strong><br>
+                    Generate unique avatars based on your personality traits
+                </div>
+                <div class="feature-item">
+                    <strong>📊 Communication Insights</strong><br>
+                    Analyze messaging patterns, response times, and habits
+                </div>
+                <div class="feature-item">
+                    <strong>🔒 Privacy First</strong><br>
+                    All processing happens locally - your data never leaves your device
+                </div>
+                <div class="feature-item">
+                    <strong>📱 Easy Import</strong><br>
+                    Direct WhatsApp ZIP file import with guided setup
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">❓</span>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is my chat data safe and private?</div>
+                <div class="faq-answer">
+                    Yes! PersonaLens processes all data locally on your device. Your conversations never leave your phone and are not uploaded to any servers. We don't collect, store, or have access to your personal conversations.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Which messaging apps does PersonaLens support?</div>
+                <div class="faq-answer">
+                    Currently, PersonaLens works with WhatsApp chat exports. We're working on adding support for iMessage, Telegram, and other popular messaging platforms in future updates.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How accurate is the personality analysis?</div>
+                <div class="faq-answer">
+                    PersonaLens uses scientifically-backed Big Five personality model (OCEAN) combined with advanced natural language processing. While no automated analysis is 100% perfect, our AI provides meaningful insights based on your communication patterns and language use.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What's the difference between free and premium features?</div>
+                <div class="faq-answer">
+                    Free version includes basic personality analysis and compatibility scoring. Premium unlocks advanced insights like predictive relationship analysis, unlimited AI character art generation, detailed sentiment trends, and comprehensive topic analysis.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why does analysis take a long time?</div>
+                <div class="faq-answer">
+                    PersonaLens performs complex AI analysis entirely on your device to protect your privacy. Processing time depends on chat length and device performance. Longer conversations (1000+ messages) may take 2-5 minutes to analyze completely.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I analyze group chats?</div>
+                <div class="faq-answer">
+                    Currently, PersonaLens works best with one-on-one conversations. Group chat analysis is planned for a future update. For now, we recommend exporting individual conversations for the most accurate results.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">My WhatsApp export file won't import. What should I do?</div>
+                <div class="faq-answer">
+                    Make sure you're exporting "Without Media" and the file is in ZIP format. If you're still having trouble, try a smaller chat first, or contact support with details about the error message you're seeing.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🔧</span>Troubleshooting</h2>
+            
+            <h3>App Won't Load Chat File</h3>
+            <div class="warning">
+                <strong>Common Solutions:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Ensure the file is exported as a ZIP (not TXT)</li>
+                    <li>Export "Without Media" to reduce file size</li>
+                    <li>Try a shorter conversation first</li>
+                    <li>Restart the app and try again</li>
+                    <li>Check that you have enough storage space</li>
+                </ul>
+            </div>
+
+            <h3>Analysis Gets Stuck</h3>
+            <div class="warning">
+                <strong>Possible Fixes:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Close and reopen the app</li>
+                    <li>Ensure your device isn't in low power mode</li>
+                    <li>Try analyzing a smaller chat first</li>
+                    <li>Free up device memory by closing other apps</li>
+                </ul>
+            </div>
+
+            <h3>Character Art Not Generating</h3>
+            <div class="warning">
+                <strong>Premium Feature:</strong> AI character art generation requires a premium subscription. Make sure you've completed the upgrade process.
+            </div>
+
+            <h3>App Crashes</h3>
+            <div class="warning">
+                <strong>If the app crashes:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Update to the latest version from the App Store</li>
+                    <li>Restart your device</li>
+                    <li>Try importing a smaller chat file</li>
+                    <li>Contact support with crash details</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🆕</span>Latest Updates</h2>
+            <h3>Version 1.0.0 - Initial Release</h3>
+            <ul>
+                <li>✅ WhatsApp chat import functionality</li>
+                <li>✅ Big Five personality analysis</li>
+                <li>✅ Relationship compatibility scoring</li>
+                <li>✅ AI character matching</li>
+                <li>✅ Privacy-first local processing</li>
+                <li>✅ Beautiful personality reports</li>
+                <li>✅ Multiple art styles for character generation</li>
+            </ul>
+
+            <h3>Coming Soon</h3>
+            <ul>
+                <li>🔄 iMessage support</li>
+                <li>🔄 Group chat analysis</li>
+                <li>🔄 Telegram integration</li>
+                <li>🔄 Advanced relationship predictions</li>
+                <li>🔄 More character art styles</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">💡</span>Tips for Best Results</h2>
+            <div class="success">
+                <ul>
+                    <li><strong>Use longer conversations:</strong> 100+ messages provide more accurate analysis</li>
+                    <li><strong>Recent chats work best:</strong> More recent conversations reflect current personality</li>
+                    <li><strong>One-on-one chats:</strong> Personal conversations give better insights than group chats</li>
+                    <li><strong>Natural conversations:</strong> Casual, authentic chats work better than formal exchanges</li>
+                    <li><strong>Mixed topics:</strong> Conversations covering various subjects provide richer analysis</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🌍</span>Privacy Policy</h2>
+            <p><strong>Data Processing:</strong> All analysis happens locally on your device. We don't collect, store, or transmit your personal conversations.</p>
+            <p><strong>Anonymous Analytics:</strong> We collect anonymous usage statistics to improve the app (no personal data).</p>
+            <p><strong>No Registration:</strong> PersonaLens doesn't require accounts or personal information.</p>
+            <p><strong>Secure:</strong> Your chat files are processed in a secure, isolated environment on your device.</p>
+            
+            <div class="success">
+                <strong>🔒 Your Privacy is Our Priority:</strong> PersonaLens is designed from the ground up to protect your personal conversations while providing meaningful insights.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">📱</span>System Requirements</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>iOS</strong><br>
+                    iOS 13.0 or later<br>
+                    iPhone 6s or newer<br>
+                    iPad (6th generation) or newer
+                </div>
+                <div class="feature-item">
+                    <strong>Storage</strong><br>
+                    50MB app size<br>
+                    Additional space for analysis<br>
+                    (varies by chat size)
+                </div>
+                <div class="feature-item">
+                    <strong>Performance</strong><br>
+                    Works offline<br>
+                    Local AI processing<br>
+                    Optimized for battery life
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 PersonaLens. All rights reserved.</p>
+        <p>Built with privacy and insights in mind 🧠✨</p>
+    </div>
+</body>
+</html> 
